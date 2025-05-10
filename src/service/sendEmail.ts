@@ -1,9 +1,12 @@
 import type { APIError, APIResponse } from "../types";
 import { api } from "./api";
 
-export async function sendEmail(email: string): Promise<APIResponse> {
+export async function sendEmail(email: string, sendToEmail: string): Promise<APIResponse> {
     try {
-        const response = await api.post(`/account/send-code/${email}`)
+        const response = await api.post(`/account/send-code`, {
+            email,
+            sendToEmail
+        })
         return {
             message: response.data.message,
             ok: true,

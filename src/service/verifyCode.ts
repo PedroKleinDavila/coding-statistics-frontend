@@ -8,7 +8,6 @@ export async function verifyCode(email: string, machineId: string, code: string)
             machineId,
             code,
         });
-        console.log(response);
         return {
             message: response.data.message,
             ok: true,
