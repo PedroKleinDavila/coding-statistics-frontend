@@ -46,6 +46,7 @@ export default function VerifyCode({ setDone, email, machineId, setSendEmail }: 
     }
 
     const handleResend = async () => {
+        console.log(import.meta.env.VITE_URL)
         const response = await resendEmail(email)
         if (!response.ok) {
             toast({
