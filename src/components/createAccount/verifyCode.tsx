@@ -1,8 +1,8 @@
 import { Button, FormControl, FormLabel, Input, Heading, VStack, Box, Icon, Text, useToast } from '@chakra-ui/react'
 import { LockIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
-import { verifyCode } from '../service/verifyCode'
-import { resendEmail } from '../service/resendEmail'
+import { verifyCode } from '../../service/verifyCode'
+import { resendEmail } from '../../service/resendEmail'
 
 type VerifyCodeProps = {
     setDone: (value: boolean) => void

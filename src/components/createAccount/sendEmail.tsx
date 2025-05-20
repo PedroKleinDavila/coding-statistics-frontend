@@ -12,7 +12,7 @@ import {
     Tooltip,
 } from '@chakra-ui/react'
 import { EmailIcon, InfoIcon } from '@chakra-ui/icons'
-import { sendEmail } from '../service/sendEmail'
+import { sendEmail } from '../../service/sendEmail'
 import { useState } from 'react'
 import { z } from 'zod'
 
