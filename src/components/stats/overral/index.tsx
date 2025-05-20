@@ -65,11 +65,6 @@ export default function Overral({ dailyData }: OverralProps) {
     setLinesData(linesData);
   }, [dailyData]);
 
-  useEffect(() => {
-    console.log("Averages:", averages);
-  }
-    , [averages]);
-
   const today = dailyData[dailyData.length - 1];
 
   return (
