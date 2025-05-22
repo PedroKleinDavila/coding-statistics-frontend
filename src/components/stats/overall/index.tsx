@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { SingleLineCustomGraph } from "../customGraphs/singleLineGraph";
 import { MultiLineStatsGraph } from "../customGraphs/multiLineGraph";
 
-interface OverralProps {
+interface OverallProps {
   dailyData: DailyStat[];
 }
 
@@ -16,7 +16,7 @@ const items = [
   { key: "filesCreated", label: "files created" },
 ] as const;
 
-export default function Overall({ dailyData }: OverralProps) {
+export default function Overall({ dailyData }: OverallProps) {
   const [averages, setAverages] = useState<Record<keyof DailyStat, number>>({
     timeSpent: 0,
     linesWritten: 0,

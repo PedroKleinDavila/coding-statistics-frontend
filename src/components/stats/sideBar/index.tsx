@@ -7,13 +7,13 @@ interface SideBarProps {
     pageFunction: (page: string) => void;
 }
 export default function SideBar({ email, pageFunction }: SideBarProps) {
-    const [selected, setSelected] = useState("Overral");
+    const [selected, setSelected] = useState("Overall");
 
     useEffect(() => {
         pageFunction(selected);
     }
         , [pageFunction, selected]);
-    const menuItems = ["Overral", "Time", "Lines", "Characters", "Files"];
+    const menuItems = ["Overall", "Time", "Lines", "Characters", "Files"];
     const itemHeight = 48;
     const itemGap = 30;
     return (
