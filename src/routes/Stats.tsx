@@ -9,7 +9,7 @@ import type { UserInfo } from '../types'
 function Stats() {
     const { email } = useParams()
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null)
-    const [page, setPage] = useState("Overral")
+    const [page, setPage] = useState("Overall")
     const toast = useToast();
     useEffect(() => {
         const getData = async () => {
@@ -31,10 +31,10 @@ function Stats() {
     }, [email, toast])
     return (
         <Flex h="100vh" w="100vw" alignItems="center" justifyContent="center" bg="#0D0D0D" color="white">
-            {userInfo && 
+            {userInfo &&
                 <>
-                    <SideBar email={email ?? ''} pageFunction={(page)=>{setPage(page)}}/>
-                    <StatsContent page={page} userInfo={userInfo}/>
+                    <SideBar email={email ?? ''} pageFunction={(page) => { setPage(page) }} />
+                    <StatsContent page={page} userInfo={userInfo} />
                 </>
             }
         </Flex>
