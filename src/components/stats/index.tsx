@@ -1,8 +1,8 @@
 import { Flex } from "@chakra-ui/react";
 import OtherStats from "./otherStats";
-import Overral from "./overral";
 import type { UserInfo } from "../../types";
 import { useEffect, useState } from "react";
+import Overall from "./overall";
 
 interface StatsContentProps {
     page: string;
@@ -29,7 +29,7 @@ export default function StatsContent({ page, userInfo }: StatsContentProps) {
         <Flex h="100vh" w="100vw" alignItems="center" justifyContent="center" bg="#0D0D0D">
             {fixedData && (
                 <>
-                    {page === "Overral" && <Overral dailyData={fixedData.dailyStats} yearlyData={fixedData.yearlyStats} />}
+                    {page === "Overral" && <Overall dailyData={fixedData.dailyStats} yearlyData={fixedData.yearlyStats} />}
                     {(page === "Time" || page === "Lines" || page === "Characters" || page === "Files") && (
                         <OtherStats page={page} />
                     )}

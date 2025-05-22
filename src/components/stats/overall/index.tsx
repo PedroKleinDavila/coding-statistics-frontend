@@ -17,7 +17,7 @@ const items = [
   { key: "filesCreated", label: "files created" },
 ] as const;
 
-export default function Overral({ dailyData }: OverralProps) {
+export default function Overall({ dailyData }: OverralProps) {
   const [averages, setAverages] = useState<Record<keyof DailyStat, number>>({
     timeSpent: 0,
     linesWritten: 0,
@@ -71,7 +71,7 @@ export default function Overral({ dailyData }: OverralProps) {
     <Flex h="100%" w="100%" alignItems="center" justifyContent="center" bg="#0D0D0D" py={8}>
       <Flex w="25%" h="100%" flexDir="column" justifyContent="center" alignItems="center">
         <Text h="40%" textAlign="left" fontSize="26px" fontWeight="600" w="85%">
-          Overral ({dailyData[dailyData.length - 1].date})
+          Overall ({dailyData[dailyData.length - 1].date})
         </Text>
         {items.map((item) => {
           const todayValue = today[item.key];

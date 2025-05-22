@@ -1,23 +1,24 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import img from "../../../../public/google-analytics.png";
 
 interface SideBarProps {
     email: string;
     pageFunction: (page: string) => void;
 }
-export default function SideBar({email, pageFunction}: SideBarProps) {
+export default function SideBar({ email, pageFunction }: SideBarProps) {
     const [selected, setSelected] = useState("Overral");
 
     useEffect(() => {
         pageFunction(selected);
     }
-    , [pageFunction, selected]);
+        , [pageFunction, selected]);
     const menuItems = ["Overral", "Time", "Lines", "Characters", "Files"];
     const itemHeight = 48;
     const itemGap = 30;
     return (
-        <Flex h="100vh" w="15vw" bg="#1A1A1A" color="white" justifyContent={"space-between"} flexDirection="column">
-            <Flex fontSize="30px" pt={4} p={4} fontWeight="700">Menu</Flex>
+        <Flex h="100vh" w="18vw" bg="#1A1A1A" color="white" justifyContent={"space-between"} flexDirection="column">
+            <Flex fontSize="30px" pt={4} p={4} fontWeight="700" alignItems="baseline"><Image h="30px" src={img} />&nbsp;CodingStats</Flex>
             <Box position="relative">
                 <Box
                     position="absolute"
