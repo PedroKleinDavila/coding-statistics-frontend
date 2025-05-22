@@ -29,9 +29,19 @@ export default function StatsContent({ page, userInfo }: StatsContentProps) {
         <Flex h="100vh" w="100vw" alignItems="center" justifyContent="center" bg="#0D0D0D">
             {fixedData && (
                 <>
-                    {page === "Overral" && <Overall dailyData={fixedData.dailyStats} yearlyData={fixedData.yearlyStats} />}
+                    {page === "Overral" && <Overall dailyData={fixedData.dailyStats} />}
                     {(page === "Time" || page === "Lines" || page === "Characters" || page === "Files") && (
-                        <OtherStats page={page} />
+                        <OtherStats page={page} dailyData={fixedData.dailyStats.map((stat) => ({
+                            date: stat.date,
+                            value:
+                                page === "Time"
+                                    ? stat.timeSpent
+                                    : page === "Lines"
+                                        ? stat.linesWritten
+                                        : page === "Characters"
+                                            ? stat.lettersWritten
+                                            : stat.filesCreated,
+                        }))} />
                     )}
                 </>
             )}

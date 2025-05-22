@@ -1,13 +1,12 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import { FiArrowDownLeft, FiArrowUpRight } from "react-icons/fi";
-import type { DailyStat, YearlyStat } from "../../../types";
+import type { ComponentDailyData, DailyStat } from "../../../types";
 import { useEffect, useState } from "react";
 import { SingleLineCustomGraph } from "../customGraphs/singleLineGraph";
 import { MultiLineStatsGraph } from "../customGraphs/multiLineGraph";
 
 interface OverralProps {
   dailyData: DailyStat[];
-  yearlyData: YearlyStat[];
 }
 
 const items = [
@@ -25,8 +24,8 @@ export default function Overall({ dailyData }: OverralProps) {
     filesCreated: 0,
     date: 0,
   });
-  const [timeData, setTimeData] = useState<{ date: string; value: number }[]>([]);
-  const [linesData, setLinesData] = useState<{ date: string; value: number }[]>([]);
+  const [timeData, setTimeData] = useState<ComponentDailyData[]>([]);
+  const [linesData, setLinesData] = useState<ComponentDailyData[]>([]);
 
   useEffect(() => {
     const total: Record<keyof DailyStat, number> = {

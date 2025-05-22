@@ -24,11 +24,21 @@ export type YearlyStat = {
     linesWritten: number;
     timeSpent: number;
     filesCreated: number;
-    year: string;
+    year: number;
 };
 
 export type UserInfo = {
     email: string;
     dailyStats: DailyStat[];
     yearlyStats: YearlyStat[];
+};
+
+export type ComponentDailyData = {
+    date: string;
+    value: number
+};
+
+export type ComponentYearlyData = {
+    year: number;
+    value: number
 };

@@ -9,14 +9,10 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
-
-type DataPoint = {
-  date: string;
-  value: number;
-};
+import type { ComponentDailyData } from "../../../types";
 
 interface SingleLineCustomGraphProps {
-  data: DataPoint[];
+  data: ComponentDailyData[];
 }
 
 export const SingleLineCustomGraph: React.FC<SingleLineCustomGraphProps> = ({ data }) => {
