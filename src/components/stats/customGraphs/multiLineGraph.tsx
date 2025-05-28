@@ -10,6 +10,7 @@ import {
     CartesianGrid,
     Legend,
 } from "recharts";
+import { CustomTooltip } from "../customComponents/customTooltip";
 
 export type DailyStat = {
     lettersWritten: number;
@@ -29,11 +30,31 @@ export const MultiLineStatsGraph: React.FC<MultiLineStatsGraphProps> = ({ data }
     const firstDate = data[0].date;
     const lastDate = data[data.length - 1].date;
 
+    const metrics = ["lettersWritten", "linesWritten", "timeSpent", "filesCreated"] as const;
+    const minMax = metrics.reduce((acc, key) => {
+        const values = data.map(d => d[key]);
+        acc[key] = {
+            min: Math.min(...values),
+            max: Math.max(...values),
+        };
+        return acc;
+    }, {} as Record<typeof metrics[number], { min: number; max: number }>);
+
+    const normalizedData = data.map(d => {
+        const normalizedEntry: Record<string, number | string> = { date: d.date };
+        metrics.forEach(key => {
+            const { min, max } = minMax[key];
+            normalizedEntry[key] =
+                max === min ? 1 : (d[key] - min) / (max - min);
+        });
+        return normalizedEntry;
+    });
+
     return (
         <Box width="100%" height="300px">
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                    data={data}
+                    data={normalizedData}
                     margin={{ top: 20, right: 20, left: 40, bottom: 30 }}
                 >
                     <CartesianGrid stroke="#444" strokeDasharray="none" />
@@ -44,51 +65,25 @@ export const MultiLineStatsGraph: React.FC<MultiLineStatsGraphProps> = ({ data }
                         tick={{ fill: "#fff", dy: 20 }}
                         ticks={[firstDate, lastDate]}
                     />
-                    <YAxis axisLine={false} tickLine={false} tick={{ fill: "#fff", dx: -30 }} />
+                    <YAxis
+                        domain={[0, 1]}
+                        axisLine={false}
+                        tickLine={false}
+                        tick={{ fill: "#fff", dx: -30 }}
+                    />
                     <Tooltip
                         contentStyle={{ backgroundColor: "#222", borderColor: "#555" }}
                         labelStyle={{ color: "#fff" }}
                         itemStyle={{ color: "#fff" }}
+                        content={<CustomTooltip originalData={data} />}
                     />
                     <Legend
                         wrapperStyle={{ color: "#fff", fontSize: 12, bottom: 0 }}
                     />
-                    <Line
-                        type="monotone"
-                        dataKey="lettersWritten"
-                        stroke="#8884d8"
-                        strokeWidth={2}
-                        dot={{ stroke: "#8884d8", strokeWidth: 2, r: 4 }}
-                        activeDot={{ r: 6 }}
-                        name="Letters Written"
-                    />
-                    <Line
-                        type="monotone"
-                        dataKey="linesWritten"
-                        stroke="#82ca9d"
-                        strokeWidth={2}
-                        dot={{ stroke: "#82ca9d", strokeWidth: 2, r: 4 }}
-                        activeDot={{ r: 6 }}
-                        name="Lines Written"
-                    />
-                    <Line
-                        type="monotone"
-                        dataKey="timeSpent"
-                        stroke="#ffc658"
-                        strokeWidth={2}
-                        dot={{ stroke: "#ffc658", strokeWidth: 2, r: 4 }}
-                        activeDot={{ r: 6 }}
-                        name="Time Spent"
-                    />
-                    <Line
-                        type="monotone"
-                        dataKey="filesCreated"
-                        stroke="#ff7300"
-                        strokeWidth={2}
-                        dot={{ stroke: "#ff7300", strokeWidth: 2, r: 4 }}
-                        activeDot={{ r: 6 }}
-                        name="Files Created"
-                    />
+                    <Line type="monotone" dataKey="timeSpent" stroke="#ffc658" strokeWidth={2} dot={{ stroke: "#ffc658", strokeWidth: 2, r: 4 }} activeDot={{ r: 6 }} name="Time Spent" />
+                    <Line type="monotone" dataKey="lettersWritten" stroke="#8884d8" strokeWidth={2} dot={{ stroke: "#8884d8", strokeWidth: 2, r: 4 }} activeDot={{ r: 6 }} name="Characters Written" />
+                    <Line type="monotone" dataKey="linesWritten" stroke="#82ca9d" strokeWidth={2} dot={{ stroke: "#82ca9d", strokeWidth: 2, r: 4 }} activeDot={{ r: 6 }} name="Lines Written" />
+                    <Line type="monotone" dataKey="filesCreated" stroke="#ff7300" strokeWidth={2} dot={{ stroke: "#ff7300", strokeWidth: 2, r: 4 }} activeDot={{ r: 6 }} name="Files Created" />
                 </LineChart>
             </ResponsiveContainer>
         </Box>

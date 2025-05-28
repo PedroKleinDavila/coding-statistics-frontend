@@ -1,6 +1,6 @@
 import { Box, Flex, Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import img from "../../../../public/google-analytics.png";
+import img from "../../../assets/google-analytics.png";
 
 interface SideBarProps {
     email: string;

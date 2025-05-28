@@ -64,13 +64,13 @@ export default function Overall({ dailyData }: OverallProps) {
     setLinesData(linesData);
   }, [dailyData]);
 
-  const today = dailyData[dailyData.length - 1];
+  const today = dailyData[dailyData.length - 1] || [];
 
   return (
     <Flex h="100%" w="100%" alignItems="center" justifyContent="center" bg="#0D0D0D" py={8}>
       <Flex w="25%" h="100%" flexDir="column" justifyContent="center" alignItems="center">
         <Text h="40%" textAlign="left" fontSize="26px" fontWeight="600" w="85%">
-          Overall ({dailyData[dailyData.length - 1].date})
+          Overall ({dailyData.length > 0 ? dailyData[dailyData.length - 1].date : "yyyy-mm-dd"})
         </Text>
         {items.map((item) => {
           const todayValue = today[item.key];
