@@ -10,7 +10,7 @@ import {
     CartesianGrid,
     Legend,
 } from "recharts";
-import { CustomTooltip } from "../customComponents/customTooltip";
+import { CustomMultiTooltip } from "../customComponents/customMultiTooltip";
 
 export type DailyStat = {
     lettersWritten: number;
@@ -75,7 +75,7 @@ export const MultiLineStatsGraph: React.FC<MultiLineStatsGraphProps> = ({ data }
                         contentStyle={{ backgroundColor: "#222", borderColor: "#555" }}
                         labelStyle={{ color: "#fff" }}
                         itemStyle={{ color: "#fff" }}
-                        content={<CustomTooltip originalData={data} />}
+                        content={<CustomMultiTooltip originalData={data} />}
                     />
                     <Legend
                         wrapperStyle={{ color: "#fff", fontSize: 12, bottom: 0 }}

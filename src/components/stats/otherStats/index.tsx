@@ -76,7 +76,7 @@ export default function OtherStats({ page, dailyData }: OtherStatsProps) {
                     <Text fontSize="20px" fontWeight="500" mb={2} w="100%" textAlign="left">
                         Daily
                     </Text>
-                    <SingleLineCustomGraph data={dailyData} />
+                    <SingleLineCustomGraph data={dailyData} type={page} />
                 </Flex>
 
                 <Flex

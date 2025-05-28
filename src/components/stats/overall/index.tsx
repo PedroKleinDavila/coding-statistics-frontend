@@ -202,7 +202,7 @@ export default function Overall({ dailyData }: OverallProps) {
                 Time (min)
               </Text>
               <Flex w="85%" bg="#1D1D20" h="75%" justifyContent="center" alignItems="center" pr={2} borderRadius={8}>
-                <SingleLineCustomGraph data={timeData} />
+                <SingleLineCustomGraph data={timeData} type="Time" />
               </Flex>
             </Flex>
             <Flex w="100%" flexDir="column" justifyContent="center" alignItems="center">
@@ -210,7 +210,7 @@ export default function Overall({ dailyData }: OverallProps) {
                 Lines
               </Text>
               <Flex w="85%" bg="#1D1D20" h="75%" justifyContent="center" alignItems="center" pr={2} borderRadius={8}>
-                <SingleLineCustomGraph data={linesData} />
+                <SingleLineCustomGraph data={linesData} type="Lines" />
               </Flex>
             </Flex>
           </Flex>

@@ -10,12 +10,14 @@ import {
   CartesianGrid,
 } from "recharts";
 import type { ComponentDailyData } from "../../../types";
+import { CustomSingleTooltip } from "../customComponents/customSingleTooltip";
 
 interface SingleLineCustomGraphProps {
   data: ComponentDailyData[];
+  type: string;
 }
 
-export const SingleLineCustomGraph: React.FC<SingleLineCustomGraphProps> = ({ data }) => {
+export const SingleLineCustomGraph: React.FC<SingleLineCustomGraphProps> = ({ data, type }) => {
   if (data.length === 0) return null;
 
   const firstDate = data[0].date;
@@ -41,6 +43,7 @@ export const SingleLineCustomGraph: React.FC<SingleLineCustomGraphProps> = ({ da
             contentStyle={{ backgroundColor: "#222", borderColor: "#555" }}
             labelStyle={{ color: "#fff" }}
             itemStyle={{ color: "#fff" }}
+            content={<CustomSingleTooltip originalData={data} type={type} />}
           />
           <Line
             type="monotone"
