@@ -22,10 +22,10 @@ export const SingleLineCustomGraph: React.FC<SingleLineCustomGraphProps> = ({ da
   const lastDate = data[data.length - 1].date;
 
   return (
-    <Box width="100%" height="300px">
+    <Box width="100%" height="100%">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={data} // usa os dados originais, sem modificar displayDate
+          data={data}
           margin={{ top: 20, right: 20, left: 40, bottom: 30 }}
         >
           <CartesianGrid stroke="#444" strokeDasharray="none" />
@@ -34,7 +34,7 @@ export const SingleLineCustomGraph: React.FC<SingleLineCustomGraphProps> = ({ da
             axisLine={false}
             tickLine={false}
             tick={{ fill: "#fff", dy: 20 }}
-            ticks={[firstDate, lastDate]} // só primeiro e último tick aparecem
+            ticks={[firstDate, lastDate]}
           />
           <YAxis axisLine={false} tickLine={false} tick={{ fill: "#fff", dx: -30 }} />
           <Tooltip
@@ -47,8 +47,8 @@ export const SingleLineCustomGraph: React.FC<SingleLineCustomGraphProps> = ({ da
             dataKey="value"
             stroke="#8884d8"
             strokeWidth={2}
-            dot={{ stroke: "#8884d8", strokeWidth: 2, r: 4 }}
-            activeDot={{ r: 6 }}
+            dot={{ stroke: "#8884d8", fill: "white", strokeWidth: 2, r: 2 }}
+            activeDot={{ r: 3 }}
           />
         </LineChart>
       </ResponsiveContainer>

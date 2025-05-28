@@ -51,7 +51,7 @@ export const MultiLineStatsGraph: React.FC<MultiLineStatsGraphProps> = ({ data }
     });
 
     return (
-        <Box width="100%" height="300px">
+        <Box width="100%" height="100%">
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                     data={normalizedData}
@@ -80,10 +80,10 @@ export const MultiLineStatsGraph: React.FC<MultiLineStatsGraphProps> = ({ data }
                     <Legend
                         wrapperStyle={{ color: "#fff", fontSize: 12, bottom: 0 }}
                     />
-                    <Line type="monotone" dataKey="timeSpent" stroke="#ffc658" strokeWidth={2} dot={{ stroke: "#ffc658", strokeWidth: 2, r: 4 }} activeDot={{ r: 6 }} name="Time Spent" />
-                    <Line type="monotone" dataKey="lettersWritten" stroke="#8884d8" strokeWidth={2} dot={{ stroke: "#8884d8", strokeWidth: 2, r: 4 }} activeDot={{ r: 6 }} name="Characters Written" />
-                    <Line type="monotone" dataKey="linesWritten" stroke="#82ca9d" strokeWidth={2} dot={{ stroke: "#82ca9d", strokeWidth: 2, r: 4 }} activeDot={{ r: 6 }} name="Lines Written" />
-                    <Line type="monotone" dataKey="filesCreated" stroke="#ff7300" strokeWidth={2} dot={{ stroke: "#ff7300", strokeWidth: 2, r: 4 }} activeDot={{ r: 6 }} name="Files Created" />
+                    <Line type="monotone" dataKey="timeSpent" stroke="#ffc658" strokeWidth={2} dot={{ stroke: "#ffc658", strokeWidth: 2, r: 2 }} activeDot={{ r: 3 }} name="Time Spent" />
+                    <Line type="monotone" dataKey="lettersWritten" stroke="#8884d8" strokeWidth={2} dot={{ stroke: "#8884d8", strokeWidth: 2, r: 2 }} activeDot={{ r: 3 }} name="Characters Written" />
+                    <Line type="monotone" dataKey="linesWritten" stroke="#82ca9d" strokeWidth={2} dot={{ stroke: "#82ca9d", strokeWidth: 2, r: 2 }} activeDot={{ r: 3 }} name="Lines Written" />
+                    <Line type="monotone" dataKey="filesCreated" stroke="#ff7300" strokeWidth={2} dot={{ stroke: "#ff7300", strokeWidth: 2, r: 2 }} activeDot={{ r: 3 }} name="Files Created" />
                 </LineChart>
             </ResponsiveContainer>
         </Box>
